@@ -1,8 +1,10 @@
 import AppBanner from './AppBanner.vue'
 import AppMore from './AppMore.vue'
-import { createApp } from 'vue'
 
-const app = createApp({})
-
-app.component(AppBanner.nam, AppBanner)
-app.component(AppMore.nam, AppMore)
+export default {
+    install(app) {
+        // 全局注册组件
+        app.component(AppBanner.name, AppBanner);
+        app.component(AppMore.name, AppMore)
+    }
+}

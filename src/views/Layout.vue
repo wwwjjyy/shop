@@ -11,16 +11,19 @@
   </div>
 
   <!-- 4、底部区域 -->
-  <div>底部区域</div>
+  <MyFooter/>
 </template>
 
 <script>
 import AppTopNav from "@/components/AppTopNav.vue";
 import MyHeader from '@/components/MyHeader.vue'
+import MyFooter from '@/components/MyFooter.vue'
+
 export default {
   components: {
     AppTopNav,
-    MyHeader
+    MyHeader,
+    MyFooter
   }
 };
 </script>
