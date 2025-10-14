@@ -8,7 +8,6 @@
   <script>
   import {ref} from 'vue'
   import {getBanner} from '@/api'
-    import AppBanner from '@/components/library/AppBanner.vue'
   export default {
       setup(props) {
           const list=ref([]);
