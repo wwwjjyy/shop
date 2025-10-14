@@ -26,6 +26,7 @@ export default {};
   height: 300px;
   border: 1px solid #f5f5f5;
   margin-bottom: 7px;
+  transition: all 0.3s;
   .images {
     display: block;
     width: 160px;
@@ -68,6 +69,7 @@ export default {};
     }
   }
   &:hover {
+    border-color: @xtxColor;
     .extra {
       height: 80px;
     }
