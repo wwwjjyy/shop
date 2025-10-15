@@ -16,11 +16,14 @@
       <!-- 弹出层 -->
       <div class="layer" :class="{active:item.open}">
         <ul>
-          <li v-for="ele in item.subCateGroupList" :key="ele.id">
+          <li v-for="ele in item.subCateGroupList" :key="ele.id">            
+            <div 
+            style="border-bottom: 1px solid #dddddd;width: 90%; margin: 0 auto 10px;"
+            >{{ele.name}}</div>
+
             <a href="#">
               <img :src="ele.categoryList[0].bannerUrl" alt />
             </a>
-            <div>{{ele.name}}</div>
           </li>
         </ul>
       </div>
