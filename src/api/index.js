@@ -7,23 +7,26 @@ import req from './req'
  * 获取分类列表
  * @returns 
  */
-export const getCategoryList=()=>req.get(base.categoryUrl);
+export const getCategoryList = () => req.get(base.categoryUrl);
 
 
 /**
  * 获取首页轮播图
  * @returns 
  */
-export const getBanner=()=>req.get(base.banerUrl);
+export const getBanner = () => req.get(base.banerUrl);
 
 /**
  * 首页主体--新鲜好物
  * @returns 
  */
-export const getNew=()=>req.get(base.findNew);
+export const getNew = () => req.get(base.findNew);
 
 /**
  * 首页主体--人气推荐
  * @returns 
  */
- export const getHot=()=>req.get(base.findhot);
+export const getHot = () => req.get(base.findhot);
+
+
+export const getProducts = () => req.get(base.product);

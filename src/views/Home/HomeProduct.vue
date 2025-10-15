@@ -1,31 +1,27 @@
 <template>
   <div class="home-product">
-    <MyPanel title="生鲜" >
+    <MyPanel v-for='item in products' :key='item.id' :title="item.name">
       <!-- 使用右侧插槽 -->
       <template #right>
         <div class="sub">
-          <router-link to="/">海鲜</router-link>
-          <router-link to="/">海鲜</router-link>
-          <router-link to="/">海鲜</router-link>
-          <router-link to="/">海鲜</router-link>
-          <router-link to="/">海鲜</router-link>
+          <router-link v-for="e in item.children" :key="e.id" to="/">{{ e.name }}</router-link>
         </div>
         <AppMore />
       </template>
 
       <div class="goods">
-          <!-- 左侧-->
-          <router-link class='left' to='/'>
-            <img src='@/assets/logo.png'/>
-          </router-link>
-          <!-- 右侧 -->
-          <div class='right'>
-              <ul class='goods-list'>
-                  <li v-for='item in 8' :key='item'>
-                      <MyGoodsItem/>
-                  </li>
-              </ul>
-          </div>
+        <!-- 左侧-->
+        <router-link class='left' to='/'>
+          <img :src=item.picture />
+        </router-link>
+        <!-- 右侧 -->
+        <div class='right'>
+          <ul class='goods-list'>
+            <li v-for='gd in item.goods' :key='gd.id'>
+              <MyGoodsItem :goods="gd"/>
+            </li>
+          </ul>
+        </div>
 
       </div>
     </MyPanel>
@@ -35,57 +31,84 @@
 <script>
 import MyPanel from "@/components/MyPanel.vue";
 import MyGoodsItem from '@/components/MyGoodsItem.vue'
+import { getProducts } from "@/api";
+import { ref } from "vue";
+
 export default {
   components: {
     MyPanel,
     MyGoodsItem
+  },
+setup(props) {
+    const products = ref([]);
+    const getProduct = async () => {
+      try {
+        const res = await getProducts();
+        console.log(res);
+        if (res.msg == '操作成功') {
+          products.value = res.result;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProduct();
+
+    return { products };
   }
 };
 </script>
 
 <style lang="less" scoped>
-.home-product{
-    background-color: #fff;
+.home-product {
+  background-color: #fff;
+  padding-bottom: 40px;
+  .sub {
+    a {
+      font-size: 16px;
+      padding: 2px 10px;
+      border-radius: 4px;
+      margin-right: 0 7px;
 
-    .sub{
-        a{
-            font-size: 16px;
-            padding: 2px 10px;
-            border-radius: 4px;
-            margin-right: 0 7px;
-            &:hover{
-                background-color: @xtxColor;
-                color:#fff;
-            }
-            &:last-child{
-                margin-right: 40px;
-            }
-        }
+      &:hover {
+        background-color: @xtxColor;
+        color: #fff;
+      }
+
+      &:last-child {
+        margin-right: 40px;
+      }
+    }
+  }
+
+  .goods {
+    height: 610px;
+    display: flex;
+
+    .left {
+      width: 240px;
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
 
-    .goods{
-        height: 610px;
+    .right {
+      flex: 1;
+
+      .goods-list {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
-        .left{
-            width: 240px;
-            margin-right: 10px;
-            img{
-                width: 100%;
-                height: 100%;
-            }
-        }
-        .right{
-            flex: 1;
-            .goods-list{
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-
-            }
-        }
-
+      }
     }
+
+  }
 
 }
 </style>

@@ -7,7 +7,7 @@
     <div class="header">
       <h3>
         {{title}}
-        <small>{{subTitle}}</small>
+        <small  v-if="subTitle"> {{subTitle}}</small>
       </h3>
       <!-- 插槽 -->
       <slot name="right"/>
@@ -26,7 +26,7 @@ export default {
     },
     subTitle: {
       type: String,
-      default: "副标题"
+      default: ""
     }
   }
 };

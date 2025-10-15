@@ -2,7 +2,7 @@ const express = require('express');
 // 引入轮播图数据
 const bannerData=require('../data/banner.json')
 const hotData=require('../data/hot.json') //人气推荐
-
+const productData=require('../data/product.json')  
 const router = express.Router();
 
 
@@ -23,6 +23,10 @@ router.get('/home/banner',(req,res)=>{
  */
  router.get('/home/hot',(req,res)=>{
     res.send(hotData)
+})
+
+router.get('/home/product',(req,res)=>{
+    res.send(productData)
 })
 
 module.exports = router;

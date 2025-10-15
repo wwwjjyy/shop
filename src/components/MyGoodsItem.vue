@@ -1,11 +1,11 @@
 <template>
   <div class="goods-item">
     <router-link class="images" to="/">
-      <img src="@/assets/logo.png" alt />
+      <img :src=goods.picture alt />
     </router-link>
-    <div class="title ellipsis-2">美威 智利原味三文鱼排 240g/袋 4片装</div>
-    <div class="type">海鲜年货</div>
-    <div class="price">￥999</div>
+    <div class="title ellipsis-2">{{ goods.name }}</div>
+    <div class="type">{{ goods.desc }}</div>
+    <div class="price">￥{{goods.price}}</div>
     <div class="extra">
       <router-link to="/">
         <span>找相似</span>
@@ -15,8 +15,13 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+const props = defineProps({
+  goods: {
+    type: Object,
+    default: () => ({})
+  }
+});
 </script>
 
 <style lang="less" scoped>

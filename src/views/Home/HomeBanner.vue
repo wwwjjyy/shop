@@ -1,8 +1,7 @@
 <template>
   <div>
     <!--全局组件 -->
-    <AppBanner :list='list'/>
-  </div>
+    <AppBanner :list='list' />  </div>
 </template>
 
 <script>
@@ -12,7 +11,7 @@ export default {
     setup(props) {
         const list=ref([]);
         getBanner().then(res=>{
-            if(res.msg='操作成功'){
+            if(res.msg==='操作成功'){
                 list.value=res.result;
             }
         }).catch(err=>{
