@@ -27,7 +27,6 @@
       const getHotList = async () => {
         try {
           const res = await getHot();
-          console.log(res);
           if (res.msg == "操作成功") {
               goods.value=res.result.slice(0,4);
           }

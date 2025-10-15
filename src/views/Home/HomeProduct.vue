@@ -44,7 +44,6 @@ setup(props) {
     const getProduct = async () => {
       try {
         const res = await getProducts();
-        console.log(res);
         if (res.msg == '操作成功') {
           products.value = res.result;
         }

@@ -37,7 +37,6 @@ export default {
     const getNewList = async () => {
       try {
         const res = await getNew();
-        console.log(res);
         if ((res.code = "200")) {
           goods.value = res.data.result.slice(0, 4);
         }

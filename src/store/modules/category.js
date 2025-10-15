@@ -20,7 +20,6 @@ export default {
             try {
                 // 发送请求，请求所有分类类别
                 const res=await getCategoryList();
-                console.log(res);
                 if(res.code==='200'){
                     commit('setList',res.data.cateList)
                 }
