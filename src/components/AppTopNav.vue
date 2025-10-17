@@ -4,7 +4,7 @@
       <ul>
         <template v-if="userinfo.token">
           <li>
-            <a href="javascript:;">张三</a>
+            <a href="javascript:;">wjy</a>
           </li>
           <li>
             <a href="javascript:;">退出登录</a>

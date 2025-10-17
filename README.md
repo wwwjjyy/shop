@@ -1,4 +1,4 @@
-# vue3-yanxuan
+# shop
 
 ## Project setup
 ```

@@ -4,7 +4,7 @@ export default {
         return {
             userinfo: {
                 token: '123',
-                username: '张三'
+                username: 'wjy'
             }
         }
     },
